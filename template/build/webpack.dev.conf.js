@@ -1,11 +1,13 @@
 /*
 * @Author: 94078
 * @Date:   2017-03-18 22:05:35
-* @Last Modified by:   94078
-* @Last Modified time: 2017-05-17 15:30:50
+* @Last Modified by:   Hxf1996
+* @Last Modified time: 2017-06-19 02:12:05
 */
 /* eslint-disable */
 
+var fs = require('fs');
+var path = require('path');
 var utils = require('./utils');
 var webpack = require('webpack');
 var config = require('../config');
@@ -32,7 +34,8 @@ module.exports = merge(baseWebpackConfig, {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'index.html',
-            inject: true
+            inject: true,
+            serviceWorkerLoader: `<script>${fs.readFileSync(path.join(__dirname, './service-worker-dev.js'), 'utf-8')}</script>`
         }),
         new FriendlyErrorsPlugin()
     ]

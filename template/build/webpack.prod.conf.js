@@ -1,11 +1,13 @@
 /*
 * @Author: 94078
 * @Date:   2017-03-18 22:05:35
-* @Last Modified by:   94078
-* @Last Modified time: 2017-05-17 15:30:54
+* @Last Modified by:   Hxf1996
+* @Last Modified time: 2017-06-19 02:15:09
 */
 /* eslint-disable */
 
+var fs = require('fs');
+var path = require('path');
 var path = require('path');
 var utils = require('./utils');
 var webpack = require('webpack');
@@ -16,6 +18,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+var SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 var env = config.build.env;
 
@@ -45,7 +48,11 @@ var webpackConfig = merge(baseWebpackConfig, {
         new ExtractTextPlugin({
             filename: utils.assetsPath('css/[name].[contenthash].css')
         }),
-        new OptimizeCSSPlugin(),
+        new OptimizeCSSPlugin({
+            cssProcessorOptions: {
+                safe: true
+            }
+        }),
         new HtmlWebpackPlugin({
             filename: config.build.index,
             template: 'index.html',
@@ -55,7 +62,8 @@ var webpackConfig = merge(baseWebpackConfig, {
                 collapseWhitespace: true,
                 removeAttributeQuotes: true
             },
-            chunksSortMode: 'dependency'
+            chunksSortMode: 'dependency',
+            serviceWorkerLoader: `<script>${fs.readFileSync(path.join(__dirname, './service-worker-prod.js'), 'utf-8')}</script>`
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
@@ -79,7 +87,14 @@ var webpackConfig = merge(baseWebpackConfig, {
             to: config.build.assetsSubDirectory,
             ignore: ['.*']
         }
-        ])
+        ]),
+        new SWPrecacheWebpackPlugin({
+            cacheId: 'my-vue-app',
+            filename: 'service-worker.js',
+            staticFileGlobs: ['dist/**/*.{js,html,css}'],
+            minify: true,
+            stripPrefix: 'dist/'
+        })
     ]
 });
 

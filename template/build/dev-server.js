@@ -1,8 +1,8 @@
 /*
 * @Author: 94078
 * @Date:   2017-03-18 22:05:35
-* @Last Modified by:   94078
-* @Last Modified time: 2017-05-17 15:30:33
+* @Last Modified by:   Hxf1996
+* @Last Modified time: 2017-06-19 02:06:42
 */
 /* eslint-disable */
 
@@ -59,17 +59,21 @@ app.use(staticPath, express.static('./static'));
 
 var uri = 'http://localhost:' + port;
 
+var _resolve;
+var readyPromise = new Promise(resolve => {
+    _resolve = resolve;
+})
+
 devMiddleware.waitUntilValid(function () {
     console.log('> Listening at ' + uri + '\n');
+    _resolve();
 });
 
-module.exports = app.listen(port, function (err) {
-    if (err) {
-        console.log(err);
-        return;
-    }
+var server = app.listen(port);
 
-    if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
-        opn(uri);
+module.exports = {
+    ready: readyPromise,
+    close: () => {
+        server.close();
     }
-});
+}
