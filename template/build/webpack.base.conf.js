@@ -1,8 +1,8 @@
 /*
 * @Author: 94078
 * @Date:   2017-03-18 22:05:35
-* @Last Modified by:   94078
-* @Last Modified time: 2017-05-17 15:30:46
+* @Last Modified by:   Hxf1996
+* @Last Modified time: 2017-06-19 17:16:37
 */
 /* eslint-disable */
 
@@ -27,9 +27,8 @@ module.exports = {
             : config.dev.assetsPublicPath
     },
     resolve: {
-        extensions: ['.js', '.vue', '.json'],
+        extensions: ['.js', '.vue', '.json', '.scss', '.sass', '.css'],
         alias: {
-            'vue': 'vue/dist/vue.js',
             '@': resolve('src')
         }
     },
