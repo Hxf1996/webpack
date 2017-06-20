@@ -22,7 +22,13 @@ module.exports = {
         },
         "author": {
             "type": "string",
-            "message": "Hxf"
+            "message": "Your name",
+            "default": "Huxfjxj"
+        },
+        "email": {
+            "type": "string",
+            "message": "Your email",
+            "default": "Huxfjxj@gmail.com"
         },
         "router": {
             "type": "confirm",
