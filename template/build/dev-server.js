@@ -2,7 +2,7 @@
 * @Author: 94078
 * @Date:   2017-03-18 22:05:35
 * @Last Modified by:   Hxf1996
-* @Last Modified time: 2017-06-19 02:06:42
+* @Last Modified time: 2017-06-20 23:19:06
 */
 /* eslint-disable */
 
@@ -66,6 +66,9 @@ var readyPromise = new Promise(resolve => {
 
 devMiddleware.waitUntilValid(function () {
     console.log('> Listening at ' + uri + '\n');
+    if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
+        opn(uri);
+    }
     _resolve();
 });
 
