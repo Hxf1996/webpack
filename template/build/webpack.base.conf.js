@@ -2,7 +2,7 @@
 * @Author: 94078
 * @Date:   2017-03-18 22:05:35
 * @Last Modified by:   Hxf1996
-* @Last Modified time: 2017-06-19 17:16:37
+* @Last Modified time: 2017-06-20 15:53:46
 */
 /* eslint-disable */
 
@@ -29,6 +29,7 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.vue', '.json', '.scss', '.sass', '.css'],
         alias: {
+            'vue$': 'vue/dist/vue.esm.js',
             '@': resolve('src')
         }
     },
