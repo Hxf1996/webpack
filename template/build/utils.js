@@ -1,8 +1,8 @@
 /*
 * @Author: 94078
 * @Date:   2017-03-18 22:05:35
-* @Last Modified by:   94078
-* @Last Modified time: 2017-05-17 15:30:38
+* @Last Modified by:   Hxf1996
+* @Last Modified time: 2017-06-21 05:38:17
 */
 /* eslint-disable */
 
@@ -51,6 +51,7 @@ exports.cssLoaders = function (options) {
 
     return {
         css: generateLoaders(),
+        postcss: generateLoaders(),
         less: generateLoaders('less'),
         sass: generateLoaders('sass', { indentedSyntax: true }),
         scss: generateLoaders('sass')
