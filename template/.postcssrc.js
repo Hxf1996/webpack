@@ -1,6 +1,8 @@
 module.exports = {
     'plugins': {
-        'postcss-cssnext': {},
-        'autoprefixer': {}
+        'postcss-cssnext': {
+            'warnForDuplicates': false
+        },
+        'cssnano': {}
     }
 }
