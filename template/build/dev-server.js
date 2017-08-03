@@ -1,8 +1,8 @@
 /*
 * @Author: 94078
 * @Date:   2017-03-18 22:05:35
-* @Last Modified by:   Hxf1996
-* @Last Modified time: 2017-06-20 23:19:06
+* @Last Modified by:   94078
+* @Last Modified time: 2017-08-03 23:44:41
 */
 /* eslint-disable */
 
@@ -33,8 +33,10 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
 });
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
-    log: () => {}
+    log: false,
+    heartbeat: 2000
 });
+
 compiler.plugin('compilation', function (compilation) {
     compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
         hotMiddleware.publish({ action: 'reload' });
@@ -64,6 +66,7 @@ var readyPromise = new Promise(resolve => {
     _resolve = resolve;
 })
 
+console.log('> Starting dev server...');
 devMiddleware.waitUntilValid(function () {
     console.log('> Listening at ' + uri + '\n');
     if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {

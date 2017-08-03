@@ -2,12 +2,13 @@
 * @Author: 94078
 * @Date:   2017-03-18 22:05:35
 * @Last Modified by:   94078
-* @Last Modified time: 2017-05-17 15:30:21
+* @Last Modified time: 2017-08-03 23:41:38
 */
 /* eslint-disable */
 
 var chalk = require('chalk');
 var semver = require('semver');
+var shell = require('shelljs');
 var packageConfig = require('../package.json');
 
 function exec (cmd) {
@@ -19,13 +20,16 @@ var versionRequirements = [
         name: 'node',
         currentVersion: semver.clean(process.version),
         versionRequirement: packageConfig.engines.node
-    },
-    {
+    }
+];
+
+if (shell.which('npm')) {
+    versionRequirements.push({
         name: 'npm',
         currentVersion: exec('npm --version'),
         versionRequirement: packageConfig.engines.npm
-    }
-];
+    })
+}
 
 module.exports = function () {
     var warnings = [];

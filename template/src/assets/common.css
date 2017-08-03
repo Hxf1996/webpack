@@ -1,0 +1,15 @@
+/*
+* @Author: 94078
+* @Date:   2017-06-23 16:32:38
+* @Last Modified by:   94078
+* @Last Modified time: 2017-07-05 10:43:07
+*/
+@custom-media --extra-small-viewport (max-width: 576px);
+@custom-media --small-viewport (min-width: 576px);
+@custom-media --medium-viewport (min-width: 768);
+@custom-media --large-viewport (min-width: 992px);
+@custom-media --extra-large-viewport (min-width: 1200);
+
+a {
+    cursor: pointer;
+}
