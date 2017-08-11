@@ -40,25 +40,8 @@ module.exports = {
         },
         "http": {
             "type": "confirm",
-            "message": "Install HTTP client ?"
+            "message": "Install Axios ?"
         },
-        "httpConfig": {
-            "when": "http",
-            "type": "list",
-            "message": "Promise based HTTP client for the browser !",
-            "choices": [
-                {
-                    "name": "axios ( Vue recommend use )",
-                    "value": "axios",
-                    "short": "axios"
-                },
-                {
-                    "name": "fetch",
-                    "value": "fetch",
-                    "short": "fetch"
-                }
-            ]
-        }
     },
     "filters": {
         "src/router/**/*": "router",
