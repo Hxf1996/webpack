@@ -1,8 +1,8 @@
 /*
 * @Author: 94078
 * @Date:   2017-03-18 22:05:35
-* @Last Modified by:   Hxf1996
-* @Last Modified time: 2017-08-03 23:49:13
+* @Last Modified by:   huxiaofeng
+* @Last Modified time: 2017-09-17 23:43:58
 */
 /* eslint-disable */
 
@@ -15,7 +15,16 @@ function resolve (dir) {
     return path.join(__dirname, '..', dir);
 }
 
-module.exports = {
+// 获得打包类型 默认daily
+var buildType = JSON.parse(process.env.npm_config_argv)['remain'][0] || 'daily';
+var assetsPublicPath = '';
+if (process.env.NODE_ENV === 'production') {
+    assetsPublicPath = config.build.assetsPublicPath[buildType];
+} else {
+    assetsPublicPath = config.dev.assetsPublicPath;
+}
+
+const baseConfig = {
     entry: {
         app: './src/main.js'
     },
@@ -71,3 +80,18 @@ module.exports = {
         }]
     }
 };
+
+if (process.env.NODE_ENV === 'production') {
+    baseConfig.module.rules.push({
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [resolve('src')],
+        options: {
+            formatter: require('eslint-friendly-formatter')
+        }
+    });
+}
+
+module.exports = baseConfig;
+

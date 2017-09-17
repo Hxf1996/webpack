@@ -1,8 +1,8 @@
 /*
 * @Author: 94078
 * @Date:   2017-03-18 22:05:35
-* @Last Modified by:   94078
-* @Last Modified time: 2017-08-03 23:44:41
+* @Last Modified by:   huxiaofeng
+* @Last Modified time: 2017-09-17 23:51:12
 */
 /* eslint-disable */
 
@@ -69,7 +69,7 @@ var readyPromise = new Promise(resolve => {
 console.log('> Starting dev server...');
 devMiddleware.waitUntilValid(function () {
     console.log('> Listening at ' + uri + '\n');
-    if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
+    if (autoOpenBrowser) {
         opn(uri);
     }
     _resolve();

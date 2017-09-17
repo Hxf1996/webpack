@@ -1,8 +1,8 @@
 /*
 * @Author: 94078
 * @Date:   2017-03-18 22:05:35
-* @Last Modified by:   Hxf1996
-* @Last Modified time: 2017-08-03 23:51:59
+* @Last Modified by:   huxiaofeng
+* @Last Modified time: 2017-09-18 00:10:53
 */
 /* eslint-disable */
 
@@ -20,6 +20,8 @@ var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 var SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 var env = config.build.env;
+var buildType = JSON.parse(process.env.npm_config_argv)['remain'][0] || 'daily';
+env['API_ROOT'] = '"' + env['API_ROOT'][buildType] + '"';
 
 var webpackConfig = merge(baseWebpackConfig, {
     module: {
@@ -87,12 +89,14 @@ var webpackConfig = merge(baseWebpackConfig, {
             ignore: ['.*']
         }
         ]),
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new SWPrecacheWebpackPlugin({
             cacheId: 'my-vue-app',
             filename: 'service-worker.js',
-            staticFileGlobs: ['dist/**/*.{js,html,css}'],
+            staticFileGlobs: [config.entry + '/**/*.{js,html,css}'],
             minify: true,
-            stripPrefix: 'dist/'
+            stripPrefix: config.entry + '/'
         })
     ]
 });

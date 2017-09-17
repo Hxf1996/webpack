@@ -1,8 +1,8 @@
 /*
 * @Author: 94078
 * @Date:   2017-03-18 22:05:35
-* @Last Modified by:   Hxf1996
-* @Last Modified time: 2017-06-19 02:12:05
+* @Last Modified by:   huxiaofeng
+* @Last Modified time: 2017-09-17 23:44:59
 */
 /* eslint-disable */
 
@@ -17,7 +17,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
-    baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name]);
+    baseWebpackConfig.entry[name] = [__dirname + '/dev-client'].concat(baseWebpackConfig.entry[name]);
 });
 
 module.exports = merge(baseWebpackConfig, {

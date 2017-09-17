@@ -1,8 +1,8 @@
 /*
 * @Author: 94078
 * @Date:   2017-03-18 22:05:35
-* @Last Modified by:   94078
-* @Last Modified time: 2017-05-17 15:26:24
+* @Last Modified by:   huxiaofeng
+* @Last Modified time: 2017-09-18 00:02:28
 */
 
 import Vue from 'vue';
@@ -11,7 +11,9 @@ import router from './router';
 import store from './store';
 
 // 生产模式时关闭
-Vue.config.productionTip = true;
+if (process.env.NODE_ENV === 'development') {
+    Vue.config.productionTip = true;
+}
 
 new Vue({
     el: '#app',
