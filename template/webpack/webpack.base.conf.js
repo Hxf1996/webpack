@@ -10,6 +10,7 @@ var path = require('path');
 var utils = require('./utils');
 var config = require('../config');
 var vueLoaderConfig = require('./vue-loader.conf');
+var resolveConfig = require('./webpack.resolve.conf');
 
 function resolve (dir) {
     return path.join(__dirname, '..', dir);
@@ -35,13 +36,7 @@ const baseConfig = {
             ? config.build.assetsPublicPath
             : config.dev.assetsPublicPath
     },
-    resolve: {
-        extensions: ['.js', '.vue', '.json', '.css'],
-        alias: {
-            'vue$': 'vue/dist/vue.esm.js',
-            '@': resolve('src')
-        }
-    },
+    resolve: resolveConfig.resolve,
     module: {
         rules: [
         {
@@ -94,4 +89,3 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = baseConfig;
-

@@ -16,44 +16,22 @@ module.exports = {
     'settings': {
         'import/resolver': {
             'webpack': {
-                'config': 'webpack/webpack.base.conf.js'
+                'config': 'webpack/webpack.resolve.conf.js'
             }
         }
     },
     'rules': {
-        "indent": [
-            "error",
-            4
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
-        "no-tabs": "off",
-        "no-new": "off",
-        "no-shadow": "off",
-        "max-len": [
-            "error",
-            150
-        ],
-        'no-param-reassign': [
-            'error',
-            {
-                'props': false
-            }
-        ],
-        'import/extensions': [0, 'always', {
+        'indent': ['error', 4],
+        'no-new': 'off',
+        'no-shadow': 'off',
+        'max-len': ['error', 150],
+        'no-param-reassign': ['error', {
+            'props': false
+        }],
+        'import/extensions': ['error', 'always', {
             'js': 'never',
             'vue': 'never'
         }],
-        'import/no-unresolved': 0,
-        'import/no-duplicates': 0,
-        'import/no-named-as-default': 0,
-        'import/no-named-as-default-member': 0,
-        'import/no-extraneous-dependencies': 0
+        'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
     }
 };
