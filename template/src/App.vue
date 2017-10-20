@@ -15,10 +15,10 @@ import Hello from './components/Hello';
 {{/unless}}
 
 export default {
-    name: 'app',{{#unless router}}
+    name: 'app',{{#router}}
     components: {
         Hello,
-    },{{/unless}}
+    },{{/router}}
 };
 </script>
 
