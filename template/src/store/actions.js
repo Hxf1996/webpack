@@ -5,6 +5,10 @@
 * @Last Modified time: 2017-08-04 00:01:52
 */
 
-export const getHello = ({ commit }) => {
+const getHello = ({ commit }) => {
     commit('hello');
+};
+
+export default {
+    getHello,
 };
