@@ -11,11 +11,11 @@
 
 <script>
 {{#unless router}}
-import Hello from './components/Hello';
-{{/unless}}
+import Hello from '@/components/Hello';
 
+{{/unless}}
 export default {
-    name: 'app',{{#unless}}
+    name: 'app',{{#unless router}}
     components: {
         Hello,
     },{{/unless}}
