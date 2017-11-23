@@ -2,7 +2,7 @@
     <div id="app">
         <img src="./assets/logo.png">
         {{#router}}
-        <router-view></router-view>
+        <router-view/>
         {{else}}
         <hello></hello>
         {{/router}}
@@ -22,7 +22,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

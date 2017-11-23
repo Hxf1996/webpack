@@ -54,22 +54,9 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/static/img/icons/favicon-16x16.png">
         <!--[if IE]><link rel="shortcut icon" href="/static/img/icons/favicon.ico"><![endif]-->
 
-        <!-- anroid WEBAPP设置 -->
-        <link rel="manifest" href="/static/manifest.json">
-
         <title>{{ name }}</title>
-
-        <% for (var chunk of webpack.chunks) {
-            for (var file of chunk.files) {
-                if (file.match(/\.(js|css)$/)) { %>
-        <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
     </head>
     <body>
-        <noscript>
-            This is your fallback content in case JavaScript fails to load.
-        </noscript>
         <div id="app"></div>
-
-        <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
     </body>
 </html>

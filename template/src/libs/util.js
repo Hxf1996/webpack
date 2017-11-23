@@ -1,10 +1,3 @@
-/*
-* @Author: 94078
-* @Date:   2017-07-21 16:44:53
-* @Last Modified by:   huxiaofeng
-* @Last Modified time: 2017-09-08 13:57:02
-*/
-
 const getStorage = (key) => {
     const value = JSON.parse(sessionStorage.getItem(key)) || '';
     return value;

@@ -1,2 +1,3 @@
-webpack/*.js
-config/*.js
+/*.js
+/webpack/
+/dist/

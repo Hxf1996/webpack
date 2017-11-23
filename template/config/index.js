@@ -1,41 +1,32 @@
-/*
-* @Author: 94078
-* @Date:   2017-03-18 22:05:35
-* @Last Modified by:   huxiaofeng
-* @Last Modified time: 2017-09-17 23:38:37
-*/
-/* eslint-disable */
-
-var path = require('path');
-
-var entry = 'build';
+const path = require('path');
 
 module.exports = {
-    build: {
-        entry: entry,
-        env: require('./prod.env'),
-        index: path.resolve(__dirname, '../' + entry + '/index.html'),
-        assetsRoot: path.resolve(__dirname, '../' + entry),
-        assetsSubDirectory: 'static',
-        assetsPublicPath: {
-            daily: 'http://daily',
-            gray: 'http://gray',
-            master: 'http://master'
-        },
-        productionSourceMap: true,
-        // setting to `true`, make sure to: npm install --save-dev compression-webpack-plugin
-        productionGzip: false,
-        productionGzipExtensions: ['js', 'css'],
-        bundleAnalyzerReport: false,
-    },
-    dev: {
-        env: require('./dev.env'),
-        port: 8080,
-        autoOpenBrowser: true,
-        assetsSubDirectory: 'static',
-        assetsPublicPath: '/',
-        proxyTable: {
-        },
-        cssSourceMap: false
-    }
+  dev: {
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
+    proxyTable: {},
+    host: 'localhost',
+    port: 8080,
+    autoOpenBrowser: true,
+    errorOverlay: true,
+    notifyOnErrors: true,
+    // 定时检测文件更新，适用ftp
+    poll: false,
+    useEslint: true,
+    showEslintErrorsInOverlay: false,
+    devtool: 'eval-source-map',
+    cacheBusting: true,
+    cssSourceMap: false,
+  },
+  build: {
+    index: path.resolve(__dirname, '../dist/index.html'),
+    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
+    productionSourceMap: true,
+    devtool: '#source-map',
+    productionGzip: false,
+    productionGzipExtensions: ['js', 'css'],
+    bundleAnalyzerReport: process.env.npm_config_report,
+  },
 };
