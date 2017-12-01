@@ -12,9 +12,6 @@ const config = require('../config');
 const env = require('../config/prod.env');
 const baseWebpackConfig = require('./webpack.base.conf');
 
-var buildType = JSON.parse(process.env.npm_config_argv)['remain'][0] || 'daily';
-env['API_ROOT'] = '"' + env['API_ROOT'][buildType] + '"';
-
 const webpackConfig = merge(baseWebpackConfig, {
     module: {
         rules: utils.styleLoaders({
@@ -97,7 +94,7 @@ const webpackConfig = merge(baseWebpackConfig, {
             ignore: ['.*'],
         }, ]),
         new SWPrecacheWebpackPlugin({
-            cacheId: '{{ name }}',
+            cacheId: 'demo',
             filename: 'service-worker.js',
             staticFileGlobs: [`${config.build.assetsRoot}/**/*.{js,html,css}`],
             minify: true,

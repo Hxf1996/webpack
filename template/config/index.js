@@ -4,7 +4,7 @@ module.exports = {
     dev: {
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
-        proxyTable: {},
+        proxyTable: require('./proxy'),
         host: 'localhost',
         port: 8080,
         autoOpenBrowser: true,
@@ -22,7 +22,9 @@ module.exports = {
         index: path.resolve(__dirname, '../dist/index.html'),
         assetsRoot: path.resolve(__dirname, '../dist'),
         assetsSubDirectory: 'static',
-        assetsPublicPath: '/',
+        assetsPublicPath: {
+            daily: '/',
+        },
         productionSourceMap: true,
         devtool: '#source-map',
         productionGzip: false,

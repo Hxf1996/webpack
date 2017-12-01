@@ -1,11 +1,14 @@
 import Axios from 'axios';
 
-const baseURL = process.env.API_ROOT;
+/* eslint-disable import/no-mutable-exports */
+let baseURL = process.env.API_ROOT;
 // 临时修改
-// const baseURL = 'http://172.172.7.74:8080/procurement';
+if (process.env.NODE_ENV === 'development') {
+    baseURL = '/';
+}
 
 const HTTP = Axios.create({
-    baseURL: `${baseURL}/procurement`,
+    baseURL,
     transformResponse: [
         data => JSON.parse(data),
     ],
